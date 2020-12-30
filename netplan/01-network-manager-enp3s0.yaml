@@ -1,0 +1,8 @@
+# Let NetworkManager manage all devices on this system
+network:
+  version: 2
+  renderer: NetworkManager
+  ethernets:
+    enp3s0:
+      dhcp4: true
+      dhcp6: true
