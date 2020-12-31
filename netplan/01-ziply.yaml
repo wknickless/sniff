@@ -1,20 +1,20 @@
 network:
   version: 2
-  renderer: NetworkManager
-  ethernets:
-    enp1s0f0:
-      link-local: [ ]
-      dhcp4: no
-      dhcp6: no
-    enp1s0f1:
-      link-local: [ ]
-      dhcp4: no
-      dhcp6: no
+  renderer: networkd
   bridges:
     ziply:
+      interfaces:
+        - enp4s0f0
+        - enp4s0f1
       link-local: [ ]
       dhcp4: no
       dhcp6: no
-      interfaces:
-        - enp1s0f0
-        - enp1s0f1
+  ethernets:
+    enp4s0f0:
+      link-local: [ ]
+      dhcp4: no
+      dhcp6: no
+    enp4s0f1:
+      link-local: [ ]
+      dhcp4: no
+      dhcp6: no
