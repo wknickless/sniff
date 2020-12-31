@@ -14,6 +14,8 @@ The basic idea is to
    DVR-rated hard drive.
 
 ## Network Configuration
+
+### Netplan
 Let's use [Netplan](https://netplan.io/) to configure all the network
 interfaces and bridges.  We'll save the contents of
 ```
@@ -22,3 +24,16 @@ interfaces and bridges.  We'll save the contents of
 into the [netplan](netplan) directory of this repository, for reference
 and fallback.
 
+### iptables-persistent
+Docker and Kubernetes really like complicated Netfilter rules, and these
+rules are applied even to packets transiting bridges with link-local
+disabled.  So:
+```
+sudo apt install iptables-persistent
+```
+and save the contents of
+```
+/etc/iptables
+```
+into the [iptables](iptables) directory of this repository, for reference
+and fallback.
