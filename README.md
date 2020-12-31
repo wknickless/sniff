@@ -26,8 +26,9 @@ and fallback.
 
 ### iptables-persistent
 Docker and Kubernetes really like complicated Netfilter rules, and these
-rules are applied even to packets transiting bridges with link-local
-disabled.  So:
+rules are applied even to packets transiting bridges with no link-local
+addresses applied.  But we want IPv4 and IPv6 packets to flow freely
+through the bridges we're using as monitoring points.  So:
 ```
 sudo apt install iptables-persistent
 ```
