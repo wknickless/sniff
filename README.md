@@ -38,3 +38,12 @@ and save the contents of
 ```
 into the [iptables](iptables) directory of this repository, for reference
 and fallback.
+
+## Docker Container
+We'll take the easy way out and simply install docker as a snap:
+```
+sudo snap install docker
+```
+The trivial container build scripts are in the
+[netsniff-ng-container](netsniff-ng-container) directory.  Note that the
+build script needs to include sudo to run correctly, because Docker.
