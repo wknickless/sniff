@@ -3,7 +3,7 @@ Configuration and scripts for full packet capture of work at home
 network traffic.
 
 The basic idea is to 
- - Put multi-port Ethernet cards in a Linux machine;
+ - Put multi-port Ethernet cards in an Ubuntu 20.04 LTS Linux machine;
  - Connect pairs of Ethernet ports between points in the home network
    where we want to capture traffic;
  - Use Linux kernel bridging between the Ethernet port pairs;
