@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: sniff
+spec:
+  selector:
+    matchLabels:
+      app: sniff
+  serviceName: "sniff"
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: sniff
+    spec:
+      hostNetwork: true
+      terminationGracePeriodSeconds: 2
+      containers:
+      - name: ziply
+        image: wknickless/netsniff-ng:latest
+        command: 
+          - netsniff-ng
+          - --in
+          - ziply
+          - --out
+          - /ziply/
+          - --prefix
+          - ziply-
+          - --silent
+          - --interval
+          - 1hrs
+        volumeMounts:
+        - name: ziply-packets
+          mountPath: /ziply
+        securityContext:
+          privileged: true
+      volumes:
+      - name: ziply-packets
+        hostPath:
+          path: /mnt/disk/purple/ziply
+          type: DirectoryOrCreate
+
