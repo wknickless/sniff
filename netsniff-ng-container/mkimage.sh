@@ -1,2 +1,4 @@
 #!/bin/bash -x
-sudo docker build . -t netsniff-ng:latest --pull
+sudo docker build . -t wknickless/netsniff-ng:latest --pull && \
+      sudo docker push wknickless/netsniff-ng:latest
+
