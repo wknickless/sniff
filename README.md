@@ -126,3 +126,28 @@ Log out and log back in to pick up the microk8s group, then:
 microk8s enable dns storage
 ```
 
+### StatefulSet sniff
+Starting out with a single bridge to sniff, a simple StatefulSet
+is probably reasonable:
+
+ - [k8s/sniff-statefulset.yaml](k8s/sniff-statefulset.yaml)
+
+## Possible improvements include:
+
+ - Developing a Helm chart to easily parameterize the bridge name,
+   storage directory, and other parameters for multiple netsniff-ng
+   containers running in parallel on the same machine;
+ - Spending more time to figure out and tune
+   [Capabilities](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-capabilities-for-a-container)
+   so the containers don't have to run privileged; or
+ - Pull the bridge interface into the container's namespace using
+   something like the CNI [host-device plugin](https://www.cni.dev/plugins/main/host-device/#example-configuration)
+   (but see [mikrok8s issue 1468](https://github.com/ubuntu/microk8s/issues/1468) 
+   and note that doing this will only let one process sniff a
+   given bridge at a time, which might be less than optimal for
+   something other than a pure full-packet-capture application; on
+   the other hand, maybe multiple sniffable interfaces could be
+   created using clever [Open vSwitch](https://www.openvswitch.org/)
+   configurations and rules)
+
+Pull requests welcome! :-)
