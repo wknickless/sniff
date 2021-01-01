@@ -98,6 +98,13 @@ $ df -h /mnt/disk/purple
 Filesystem      Size  Used Avail Use% Mounted on
 /dev/sda        7.3T   52G  7.3T   1% /mnt/disk/purple
 ```
+Above we installed Wireshark to run as non-root, which means creating a
+group called wireshark.  What a happy coincidence; we need a group with privileges
+to write those packets to the drive!
+```
+sudo chgrp wireshark /mnt/disk/purple
+sudo chmod 775 /mnt/disk/purple
+```
 
 ## Kubernetes
 ### Base Configuration
