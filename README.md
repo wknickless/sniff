@@ -58,6 +58,11 @@ We'll take the easy way out and simply install docker as a snap:
 ```
 sudo snap install docker
 ```
+But let's be a little safer by creating a revokable token on the
+[Docker Hub Portal Security Tab](https://hub.docker.com/settings/security), then:
+```
+sudo docker login --username $DOCKER_HUB_USERNAME
+```
 The trivial container build scripts are in the
 [netsniff-ng-container](netsniff-ng-container) directory.  Note that the
 build script needs to include sudo to run correctly, because Docker.
