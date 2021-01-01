@@ -39,6 +39,20 @@ and save the contents of
 into the [iptables](iptables) directory of this repository, for reference
 and fallback.
 
+### Wireshark
+As quoted in [this article](https://packetlife.net/blog/2010/mar/19/sniffing-wireshark-non-root-user/),
+WIRESHARK CONTAINS OVER ONE POINT FIVE MILLION LINES OF SOURCE CODE. DO NOT RUN THEM AS ROOT.
+And, of course, we want the latest version of Wireshark from the developers.
+```
+sudo add-apt-repository universe
+sudo add-apt-repository ppa:wireshark-dev/stable
+sudo apt update
+sudo apt install wireshark
+```
+Be sure to say "Yes" when asked to configure wireshark to run as non-root; this
+will be important later on when we want to run unprivileged containers that
+can sniff packets.
+
 ## Docker Container
 We'll take the easy way out and simply install docker as a snap:
 ```
