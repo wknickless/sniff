@@ -1,20 +1,20 @@
 network:
   version: 2
   renderer: networkd
-  bridges:
+  ethernets:
+    enp1s0f0:
+      link-local: [ ]
+      dhcp4: no
+      dhcp6: no
+    enp1s0f1:
+      link-local: [ ]
+      dhcp4: no
+      dhcp6: no
+  bonds:
     spectrum:
       interfaces:
-        - enp1s0f2
-        - enp1s0f3
-      link-local: [ ]
-      dhcp4: no
-      dhcp6: no
-  ethernets:
-    enp1s0f2:
-      link-local: [ ]
-      dhcp4: no
-      dhcp6: no
-    enp1s0f3:
+      - enp1s0f0
+      - enp1s0f1
       link-local: [ ]
       dhcp4: no
       dhcp6: no

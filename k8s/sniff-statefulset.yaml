@@ -18,7 +18,7 @@ spec:
       containers:
       - name: ziply
         image: wknickless/netsniff-ng:latest
-        command: 
+        command:
           - netsniff-ng
           - --in
           - ziply
@@ -34,9 +34,53 @@ spec:
           mountPath: /ziply
         securityContext:
           privileged: true
+      - name: spectrum
+        image: wknickless/netsniff-ng:latest
+        command:
+          - netsniff-ng
+          - --in
+          - spectrum
+          - --out
+          - /spectrum/
+          - --prefix
+          - spectrum-
+          - --silent
+          - --interval
+          - 1hrs
+        volumeMounts:
+        - name: spectrum-packets
+          mountPath: /spectrum
+        securityContext:
+          privileged: true
+      - name: milkyway
+        image: wknickless/netsniff-ng:latest
+        command:
+          - netsniff-ng
+          - --in
+          - enp1s0f2
+          - --out
+          - /milkyway/
+          - --prefix
+          - milkyway-
+          - --silent
+          - --interval
+          - 1hrs
+        volumeMounts:
+        - name: milkyway-packets
+          mountPath: /milkyway
+        securityContext:
+          privileged: true
       volumes:
       - name: ziply-packets
         hostPath:
           path: /mnt/disk/purple/ziply
+          type: DirectoryOrCreate
+      - name: spectrum-packets
+        hostPath:
+          path: /mnt/disk/purple/spectrum
+          type: DirectoryOrCreate
+      - name: milkyway-packets
+        hostPath:
+          path: /mnt/disk/purple/milkyway
           type: DirectoryOrCreate
 
