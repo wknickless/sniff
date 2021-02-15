@@ -34,40 +34,40 @@ spec:
           mountPath: /ziply
         securityContext:
           privileged: true
-      - name: spectrum
+      - name: cradlepoint
         image: wknickless/netsniff-ng:latest
         command:
           - netsniff-ng
           - --in
-          - spectrum
+          - cradlepoint
           - --out
-          - /spectrum/
+          - /cradlepoint/
           - --prefix
-          - spectrum-
+          - cradlepoint-
           - --silent
           - --interval
           - 1hrs
         volumeMounts:
-        - name: spectrum-packets
-          mountPath: /spectrum
+        - name: cradlepoint-packets
+          mountPath: /cradlepoint
         securityContext:
           privileged: true
-      - name: milkyway
+      - name: speedify
         image: wknickless/netsniff-ng:latest
         command:
           - netsniff-ng
           - --in
-          - enp1s0f2
+          - enp1s0f3
           - --out
-          - /milkyway/
+          - /speedify/
           - --prefix
-          - milkyway-
+          - speedify-
           - --silent
           - --interval
           - 1hrs
         volumeMounts:
-        - name: milkyway-packets
-          mountPath: /milkyway
+        - name: speedify-packets
+          mountPath: /speedify
         securityContext:
           privileged: true
       volumes:
@@ -75,12 +75,12 @@ spec:
         hostPath:
           path: /mnt/disk/purple/ziply
           type: DirectoryOrCreate
-      - name: spectrum-packets
+      - name: cradlepoint-packets
         hostPath:
-          path: /mnt/disk/purple/spectrum
+          path: /mnt/disk/purple/cradlepoint
           type: DirectoryOrCreate
-      - name: milkyway-packets
+      - name: speedify-packets
         hostPath:
-          path: /mnt/disk/purple/milkyway
+          path: /mnt/disk/purple/speedify
           type: DirectoryOrCreate
 
