@@ -1,0 +1,9 @@
+[Unit]
+Wants=network-online.target
+After=network.target network-online.target
+
+[Service]
+ExecStart=/usr/local/sbin/speedtests-to-elastic.sh
+
+[Install]
+WantedBy=multi-user.target
