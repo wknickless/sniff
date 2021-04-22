@@ -1,20 +1,13 @@
+# Ziply DSL
 network:
   version: 2
-  renderer: networkd
-  bridges:
-    ziply:
-      interfaces:
-        - enp4s0f0
-        - enp4s0f1
-      link-local: [ ]
-      dhcp4: no
-      dhcp6: no
+  renderer: NetworkManager
   ethernets:
-    enp4s0f0:
-      link-local: [ ]
-      dhcp4: no
-      dhcp6: no
-    enp4s0f1:
-      link-local: [ ]
-      dhcp4: no
-      dhcp6: no
+    ziply:
+      match:
+        macaddress: "d8:9e:f3:07:b5:f3"
+      set-name: ziply
+      dhcp4: true
+      dhcp4-overrides:
+        route-metric: 300
+      dhcp6: false

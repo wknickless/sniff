@@ -1,8 +1,0 @@
-network:
-  version: 2
-  renderer: networkd
-  ethernets:
-    enp1s0f2:
-      link-local: [ ]
-      dhcp4: no
-      dhcp6: no

@@ -1,0 +1,13 @@
+# 4910 Milky Way (Spectrum via Unifi Security Gateway)
+network:
+  version: 2
+  renderer: NetworkManager
+  ethernets:
+    spectrum:
+      match:
+        macaddress: "a0:36:9f:21:14:0a"
+      set-name: spectrum
+      dhcp4: true
+      dhcp4-overrides:
+        route-metric: 200
+      dhcp6: false

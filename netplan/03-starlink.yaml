@@ -1,0 +1,16 @@
+# Starlink
+network:
+  version: 2
+  renderer: NetworkManager
+  ethernets:
+    starlink:
+      match:
+        macaddress: "a0:36:9f:21:14:0b"
+      set-name: starlink
+      dhcp4: true
+      dhcp4-overrides:
+        route-metric: 100
+      dhcp6: true
+      routes:
+      - to: 192.168.100.1/32
+        via: 192.168.1.1
